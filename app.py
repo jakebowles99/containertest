@@ -157,6 +157,6 @@ api.add_resource(results, '/results')  # '/pbs' is our entry point
 @app.route('/')
 def hello_world():
   # Initialize class and upload files
-    return render_template('index.html', title='Welcome', username='jake')
+    return render_template('index.html', title='Welcome', username='Jake')
 # if __name__ == '__main__':
 #     app.run()  # run our Flask app
