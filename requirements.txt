@@ -3,3 +3,5 @@ Flask==2.0.3
 pandas
 power_of_10
 flask_restful
+requests
+bs4

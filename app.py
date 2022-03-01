@@ -44,6 +44,24 @@ class performances(Resource):
 
         for x in atheleteDetails["performances"]:
             performances.append(x)
+        for result in performances:
+
+            blank = result['value'].count(':')
+            split = result['value'].split(":")
+
+            secs= 0
+            for i in range(0, blank +1):
+                index = blank - i
+                if(i == 0):
+                    counter = 1
+                else:
+                    counter = 60**i
+                try:
+                    secs += int(split[index]) * counter
+                except:
+                    print("no integer my drilla")
+            result['value'] = secs
+            count=count+1
 
         return {'data': performances}, 200  # return data and 200 OK code
     pass
@@ -105,12 +123,26 @@ class results(Resource):
             print(meetingId)
             results.append(get_results(meeting_id=meetingId))
 
-        # for meeting in events:
-        #     meetingId=meeting[0]["meeting_id"]
-        #     print(meetingId)
-        #     results.append(get_results(meeting_id=meetingId))
-        
-        #atheleteDetails=json.dumps(results)
+        for result in results:
+            resultList = result['results'][0]['results']
+            count = 0
+            for item in resultList:
+                blank = item['perf'].count(':')
+                split = item['perf'].split(":")
+
+                secs= 0
+                for i in range(0, blank +1):
+                    index = blank - i
+                    if(i == 0):
+                        counter = 1
+                    else:
+                        counter = 60**i
+                    try:
+                        secs += int(split[index]) * counter
+                    except:
+                        print("no integer my drilla")
+                result['results'][0]['results'][count]['perf'] = secs
+                count=count+1
 
 
         return {'data': results}, 200  # return data and 200 OK code
