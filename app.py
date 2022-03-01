@@ -61,7 +61,6 @@ class performances(Resource):
                 except:
                     print("no integer my drilla")
             result['value'] = secs
-            count=count+1
 
         return {'data': performances}, 200  # return data and 200 OK code
     pass
