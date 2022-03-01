@@ -8,8 +8,8 @@ trigger:
 resources:
 - repo: self
 
-# Agent VM image name
-pool: Default
+# # Agent VM image name
+# pool: Default
 
 variables:
   # Container registry service connection established during pipeline creation
@@ -28,7 +28,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      Default
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
