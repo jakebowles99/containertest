@@ -34,36 +34,7 @@ def get_results(meeting_id):
             else:
                 if '\xa0' not in str(dets[0]) and 'Pos' not in str(dets[1].text) and 'Gun' not in str(dets[3].text) :
                     try :
-                        int(dets[3].text)
-                        try:
-                            results[count]['results'].append({
-                                'pos': dets[1].text,
-                                'perf': dets[2].text,
-                                'name': dets[3].text,
-                                'athlete_id': str(dets[3]).split('"')[1].split('=')[1] if len(str(dets[3]).split('"')) > 1 else '',
-                                'age_group': dets[5].text,
-                                'gender': dets[6].text,
-                                #'year': dets[6].text,
-                                #'coach': dets[7].text if dets[7].text != '\xa0' else '',
-                                'club': dets[7].text,
-                                'sb': dets[8].text,
-                                'pb': dets[9].text
-                            })
-                        except:
-                            results[count]['results'].append({
-                                'pos': dets[1].text,
-                                'perf': dets[2].text,
-                                'name': dets[3].text,
-                                'athlete_id': 'n/a',
-                                'age_group': dets[5].text,
-                                'gender': dets[6].text,
-                                #'year': dets[6].text,
-                                #'coach': dets[7].text if dets[7].text != '\xa0' else '',
-                                'club': dets[7].text,
-                                'sb': dets[8].text,
-                                'pb': dets[9].text
-                            })
-                    except:
+                        int((dets[3].text).replace(":",""))
                         try:
                             results[count]['results'].append({
                                 'pos': dets[1].text,
@@ -75,8 +46,8 @@ def get_results(meeting_id):
                                 #'year': dets[6].text,
                                 #'coach': dets[7].text if dets[7].text != '\xa0' else '',
                                 'club': dets[8].text,
-                                'sb': dets[9].text,
-                                'pb': dets[10].text
+                                # 'sb': dets[9].text,
+                                # 'pb': dets[10].text
                             })
                         except:
                             results[count]['results'].append({
@@ -89,8 +60,33 @@ def get_results(meeting_id):
                                 #'year': dets[6].text,
                                 #'coach': dets[7].text if dets[7].text != '\xa0' else '',
                                 'club': dets[8].text,
-                                'sb': dets[9].text,
-                                'pb': dets[10].text
+                                # 'sb': dets[8].text,
+                                # 'pb': dets[9].text
+                            })
+                    except:
+                        try:
+                            results[count]['results'].append({
+                                'pos': dets[1].text,
+                                'perf': dets[2].text,
+                                'name': dets[3].text,
+                                'athlete_id': str(dets[3]).split('"')[1].split('=')[1] if len(str(dets[3]).split('"')) > 1 else '',
+                                'age_group': dets[5].text,
+                                'gender': dets[6].text,
+                                #'year': dets[6].text,
+                                #'coach': dets[7].text if dets[7].text != '\xa0' else '',
+                                'club': dets[7].text,
+                            })
+                        except:
+                            results[count]['results'].append({
+                                'pos': dets[1].text,
+                                'perf': dets[2].text,
+                                'name': dets[3].text,
+                                'athlete_id': 'n/a',
+                                'age_group': dets[5].text,
+                                'gender': dets[6].text,
+                                #'year': dets[6].text,
+                                #'coach': dets[7].text if dets[7].text != '\xa0' else '',
+                                'club': dets[7].text,
                             })
 
         meeting = {
@@ -131,7 +127,7 @@ def get_results(meeting_id):
                             'gender': dets[6].text,
                             #'year': dets[7].text,
                             #'coach': dets[8].text if dets[7].text != '\xa0' else '',
-                            #'club': dets[9].text
+                            'club': dets[7].text
                         })
                     except:
                         results[count]['results'].append({
@@ -143,7 +139,7 @@ def get_results(meeting_id):
                             'gender': dets[6].text,
                             #'year': dets[7].text,
                             #'coach': dets[8].text if dets[7].text != '\xa0' else '',
-                            #'club': dets[9].text
+                            'club': dets[7].text
                         })
 
         meeting = {
