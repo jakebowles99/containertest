@@ -4,7 +4,7 @@ from power_of_10 import get_athlete
 from results import get_results
 import json
 import os
-from flask import Flask
+from flask import Flask, request, redirect
 from flask import render_template
 from flask_restful import Resource, Api, reqparse
 import pandas as pd
@@ -152,6 +152,12 @@ api.add_resource(performances, '/perfs')  # '/pbs' is our entry point
 api.add_resource(atheleteDetails, '/details')  # '/pbs' is our entry point
 api.add_resource(events, '/events')  # '/pbs' is our entry point
 api.add_resource(results, '/results')  # '/pbs' is our entry point
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+    text = request.form['text']
+    processed_text = text.upper()
+    return redirect("https://jbcicd.azurewebsites.net/details?firstname=jake&surname=bowles")
 
 @app.route('/')
 def hello_world():
