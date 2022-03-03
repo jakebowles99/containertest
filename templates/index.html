@@ -4,7 +4,18 @@
     </head>
     <body>
         <h1>Hello {{ username }}</h1>
+
+        
         <form method="POST">
+            <label for="cars">Data:</label>
+
+            <select name="data" id="data">
+            <option value="results">results</option>
+            <option value="pbs">pbs</option>
+            <option value="perfs">perfs</option>
+            <option value="details">details</option>
+            <option value="events">events</option>
+            </select> 
             <input name="text">
             <input type="submit">
         </form>
