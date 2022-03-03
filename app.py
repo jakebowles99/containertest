@@ -157,7 +157,9 @@ api.add_resource(results, '/results')  # '/pbs' is our entry point
 def my_form_post():
     text = request.form['text']
     processed_text = text.upper()
-    return redirect("https://jbcicd.azurewebsites.net/details?firstname=jake&surname=bowles")
+    string_arr = processed_text.split(" ")
+
+    return redirect(f"https://jbcicd.azurewebsites.net/details?firstname={string_arr[0]}&surname={string_arr[1]}")
 
 @app.route('/')
 def hello_world():
