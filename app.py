@@ -75,7 +75,7 @@ class atheleteDetails(Resource):
         athleteId = search_athletes(firstname=args['firstname'], surname=args['surname'])
         # atheleteDetails = get_athlete(athleteId[0]["athlete_id"])
 
-        return {athleteId}, 200  # return data and 200 OK code
+        return {'data': athleteId}, 200  # return data and 200 OK code
     pass
 
 def get_events(firstname, lastname):
